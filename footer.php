@@ -1,5 +1,9 @@
 <footer class="site-footer">
     <div class="container-footer">
+
+        <!-- Modale de contact -->
+        <?php get_template_part('template_parts/modal-contact'); ?>
+
         <!-- Contenu du pied de page -->
         <div class="footer-links">
             <?php
