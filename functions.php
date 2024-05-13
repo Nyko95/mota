@@ -3,7 +3,8 @@
 function mota_setup() {
     // Active la gestion des menus dans l'interface d'administration WordPress
     register_nav_menus(array(
-        'menu-principal' => __('Menu Principal', 'mota'),
+        'menu-principal' => __('Menu Principal', 'mota'), // Pour le menu du header
+        'menu-footer' => __('Menu Footer', 'mota'), // Pour le menu du footer
     ));
 }
 add_action('after_setup_theme', 'mota_setup');

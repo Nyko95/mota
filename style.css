@@ -1,0 +1,79 @@
+/*CSS POUR LE HEADER*/
+
+.menu li {
+  list-style: none;
+}
+
+.menu li a {
+  list-style: none; /* Supprime les puces devant chaque élément de liste */
+  text-decoration: none; /* Supprime le soulignement des liens dans les éléments li */
+  font-family: "Space Mono", monospace; /* Utilisez la police Space Mono */
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 23.7px;
+  text-align: left;
+  color: black;
+  text-transform: uppercase; /* Mettre tout le texte en majuscules */
+  margin-top: 14px;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Aligne les éléments sur les extrémités */
+}
+
+.site-logo {
+  flex: 0 0 auto; /* Ne pas agrandir ou réduire le logo */
+  margin-left: 146px; /* Décalage du logo sur la droite */
+  margin-top: 14px; /* Décalage du logo vers le bas */
+}
+
+.main-navigation {
+  text-align: right; /* Aligne le texte à droite */
+  margin-right: 214px; /* Décalage des liens vers la gauche */
+}
+
+.main-navigation ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+}
+
+.main-navigation li {
+  margin-left: 20px;
+}
+
+.main-navigation li:first-child {
+  margin-left: 0px;
+}
+
+main-navigation li:nth-child(3) {
+  margin-left: 1226px; /* Décalage du troisième lien sur la droite */
+}
+
+/*CSS POUR LE FOOTER*/
+
+.site-footer {
+  display: flex;
+  justify-content: center;
+}
+.footer-links {
+  display: flex;
+  justify-content: space-between; /* Aligner les éléments sur les extrémités */
+}
+
+.footer-links ul {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li {
+  margin-right: 85.5px; /* Espacement entre les éléments */
+}
+
+.footer-links li:last-child {
+  margin-right: 0; /* Supprimer la marge à droite pour le dernier élément */
+}

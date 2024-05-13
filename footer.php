@@ -1,15 +1,17 @@
-  <!-- Début du pied de page du site -->
-  <footer class="site-footer">
-        <div class="container">
-            <!-- Contenu du pied de page -->
-            <div class="footer-links">
-                <a href="<?php echo esc_url(home_url('/mentions-legales')); ?>">Mentions légales</a>
-                <a href="<?php echo esc_url(home_url('/vie-privee')); ?>">Vie privée</a>
-                <p>© <?php echo date('Y'); ?> MOTA. Tous droits réservés.</p>
-            </div>
-        </div><!-- .container -->
-    </footer><!-- .site-footer -->
+<footer class="site-footer">
+    <div class="container-footer">
+        <!-- Contenu du pied de page -->
+        <div class="footer-links">
+            <?php
+            wp_nav_menu(array(
+                'theme_location' => 'menu-footer', // Emplacement du menu défini dans functions.php
+                'menu_id' => 'footer-menu',
+            ));
+            ?>
+        </div>
+    </div><!-- .container -->
+</footer><!-- .site-footer -->
 
-    <?php wp_footer(); ?>
+<?php wp_footer(); ?>
 </body>
 </html>
