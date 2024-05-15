@@ -80,29 +80,41 @@ main-navigation li:nth-child(3) {
 
 /*MODALE DE CONTACT*/
 
-#modal-contact {
+.modal {
   display: none;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #ffffff;
-  padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  z-index: 10000; /* Valeur de z-index plus élevée */
-  font-family: Poppins;
-  font-size: 12px;
-  font-weight: 500;
-  line-height: 18px;
-  text-align: left;
-  border: 3px solid #000000;
+  z-index: 4; /* Assure que la modale est placée au-dessus du reste du contenu */
+  width: 100%; /* Largeur de la modale sur toute la largeur de la fenêtre */
+  height: 100%; /* Hauteur de la modale sur toute la hauteur de la fenêtre */
+  overflow: auto; /* Ajoute un défilement automatique si le contenu de la modale dépasse la taille de la fenêtre */
+  background-color: transparent; /* Fond transparent pour la modale */
+  position: fixed; /* Positionnement fixe pour maintenir la modale en place */
+  left: 0; /* Alignement à gauche de la fenêtre */
+  top: 0; /* Alignement en haut de la fenêtre */
+}
+.modal-content {
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 80px;
+  padding-top: 18px;
+  width: 597px;
+  height: 769px;
+  border: solid 5px black;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
 }
 
 #modal-contact label {
   display: block;
   margin-bottom: 10px;
   text-transform: uppercase; /* Texte en majuscules */
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 46px;
 }
 
 #modal-contact input[type="submit"] {
