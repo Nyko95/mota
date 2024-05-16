@@ -23,3 +23,28 @@ jQuery(document).ready(function ($) {
     }
   });
 });
+
+/* OUVERTURE DE LA MODALE DE CONTACT AU CLIC SUR LE BOUTON "CONTACT"*/
+
+jQuery(document).ready(function ($) {
+  // Ouvrir la modale de contact au clic sur le bouton "Contact"
+  $(".open-contact-modal").on("click", function () {
+    // Ouvre la modale de contact ici
+  });
+});
+
+/*Pour recuperer la ref de la photo dynamiquement A MODIFIER PAR LA SUITE classe "reference-photo"*/
+
+jQuery(document).ready(function ($) {
+  // Ouvrir la modale de contact au clic sur le bouton "Contact"
+  $(".open-contact-modal").on("click", function () {
+    // Ouvre la modale de contact
+    $("#modal-contact").fadeIn();
+
+    // Récupère la référence de la photographie
+    var referencePhoto = $(".reference-photo").text().trim(); // Récupère le texte dans l'élément avec la classe "reference-photo"
+
+    // Injecte la référence de la photographie dans le champ "RÉF. PHOTO" de la modale
+    $("#reference-photo").val(referencePhoto);
+  });
+});
