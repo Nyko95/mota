@@ -45,6 +45,6 @@ jQuery(document).ready(function ($) {
     var referencePhoto = $(".reference-photo").text().trim(); // Récupère le texte dans l'élément avec la classe "reference-photo"
 
     // Injecte la référence de la photographie dans le champ "RÉF. PHOTO" de la modale
-    $("#reference-photo").val(referencePhoto);
+    $(".wpcf7-form-control-wrap").val(referencePhoto);
   });
 });

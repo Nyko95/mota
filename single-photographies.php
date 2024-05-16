@@ -71,10 +71,6 @@ while ( have_posts() ) :
 		?>
 	</div><!-- .entry-content -->
 
-	<footer class="entry-footer">
-		<?php twenty_twenty_one_entry_footer(); ?>
-	</footer><!-- .entry-footer -->
-
 	<!--Bouton "contact" pour chaque photographie-->
 	<button class="open-contact-modal">Contact</button>
 
