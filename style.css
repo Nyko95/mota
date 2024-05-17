@@ -160,6 +160,8 @@ main-navigation li:nth-child(3) {
   top: 23px;
   gap: 0px;
   border-radius: 8px;
-  border: 1px solid #b8bbc2; /* Bordure grise */
+  border: 1px solid #b8bbc2;
   opacity: 0px;
 }
+
+/*STRUCTURE CSS DU TEMPLATE SINGLE-PHOTOGRAPHIES*/

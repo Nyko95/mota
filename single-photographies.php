@@ -17,12 +17,11 @@ while ( have_posts() ) :
 ?>
 
 <!-- Affichage du contenu de l'article -->
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+<article id="post-<?php the_ID(); ?>;" <?php post_class(); ?>>
 	<header class="entry-header">
-		
-	<!--Affichage du titre pour chaques articles-->
+		<!-- Affichage du titre pour chaque article -->
 		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
-	</header><!-- .entry-header -->
+</header><!-- .entry-header -->
 
 	<div class="entry-content">
 		<?php
@@ -32,49 +31,42 @@ while ( have_posts() ) :
 			// Afficher le champ personnalisé "type" s'il existe
 			$type = get_field('type');
 			if ($type) {
-				echo '<p>Type : ' . $type . '</p>';
+				echo '<p>Type : ' . esc_html($type) . '</p>';
 			}
 
 			// Afficher le champ personnalisé "référence" s'il existe
 			$reference = get_field('reference');
 			if ($reference) {
-				echo '<p>Référence : ' . $reference . '</p>';
+				echo '<p>;Référence : ' . esc_html($reference) . '</p>';
+			}
+
+			// Afficher le champ personnalisé "image" s'il existe
+			$image = get_field('image');
+			if ($image) {
+				echo '<div class="photo-image">';
+				echo wp_get_attachment_image($image, 'full', false, array('style' => 'object-fit: cover; width: 100%; height: auto;'));
+				echo '</div>';
 			}
 
 			// Afficher les taxonomies (catégories, formats, années)
-			$categories = get_the_terms( get_the_ID(), 'categorie' );
-			if ( $categories && ! is_wp_error( $categories ) ) {
-				echo '<div class="entry-taxonomies">';
-				foreach ( $categories as $category ) {
-					echo '<span class="entry-taxonomy">' . esc_html( $category->name ) . '</span>';
+			$taxonomies = array('categorie', 'format', 'annee');
+			foreach ($taxonomies as $taxonomy) {
+				$terms = get_the_terms(get_the_ID(), $taxonomy);
+				if ($terms && !is_wp_error($terms)) {
+					echo '<div class="entry-taxonomies">';
+					foreach ($terms as $term) {
+						echo '<span class="entry-taxonomy">' . esc_html($term->name) . '</span>';
+					}
+					echo '</div>';
 				}
-				echo '</div>';
-			}
-
-			$formats = get_the_terms( get_the_ID(), 'format' );
-			if ( $formats && ! is_wp_error( $formats ) ) {
-				echo '<div class="entry-taxonomies">';
-				foreach ( $formats as $format ) {
-					echo '<span class="entry-taxonomy">' . esc_html( $format->name ) . '</span>';
-				}
-				echo '</div>';
-			}
-
-			$annees = get_the_terms( get_the_ID(), 'annee' );
-			if ( $annees && ! is_wp_error( $annees ) ) {
-				echo '<div class="entry-taxonomies">';
-				foreach ( $annees as $annee ) {
-					echo '<span class="entry-taxonomy">' . esc_html( $annee->name ) . '</span>';
-				}
-				echo '</div>';
 			}
 		?>
 	</div><!-- .entry-content -->
 
-	<!--Bouton "contact" pour chaque photographie-->
+	<!-- Bouton "contact" pour chaque photographie -->
 	<button class="open-contact-modal">Contact</button>
 
-</article><!-- #post-<?php the_ID(); ?> -->
+		</article><!-- #post-<?php the_ID(); ?>; -->
 
 <?php
 endwhile; // End of the loop.
