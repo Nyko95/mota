@@ -1,25 +1,36 @@
-<?php
-/**
- * The template for displaying all single posts
- *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
- *
- * @package WordPress
- * @subpackage Twenty_Twenty_One
- * @since Twenty Twenty-One 1.0
- */
+<?php get_header(); ?>
 
-get_header();
+<div class="single-post-container">
+    <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+        <!-- Début de la boucle WordPress -->
 
-/* Start the Loop */
-while ( have_posts() ) :
-	the_post();
-	get_template_part( 'template-parts/content/content-page' );
+        <div class="post-content">
 
-	// If comments are open or there is at least one comment, load up the comment template.
-	if ( comments_open() || get_comments_number() ) {
-		comments_template();
-	}
-endwhile; // End of the loop.
+            <!-- Afficher le titre de l'article -->
+            <h1 class="post-title"><?php the_title(); ?></h1>
 
-get_footer();
+            <!-- Afficher l'image mise en avant de l'article -->
+            <?php if (has_post_thumbnail()) : ?>
+                <div class="post-thumbnail">
+                    <?php the_post_thumbnail(); ?>
+                </div>
+            <?php endif; ?>
+
+            <!-- Afficher le contenu de l'article -->
+            <div class="post-text">
+                <?php the_content(); ?>
+            </div>
+
+        </div>
+
+    <?php endwhile; else: ?>
+
+        <!-- Message si la page n'existe pas -->
+        <p><?php esc_html_e('Désolé, cette page n\'existe pas.', 'mota'); ?></p>
+
+    <?php endif; ?>
+    <!-- Fin de la boucle WordPress -->
+
+</div>
+
+<?php get_footer(); ?>
