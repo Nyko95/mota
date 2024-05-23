@@ -1,3 +1,16 @@
+/* ********* STYLE GENERALE ********** */
+body {
+  text-transform: uppercase;
+  margin: 0;
+  color: black;
+  font-family: "space mono", monospace;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
 /*CSS POUR LE HEADER*/
 
 .menu li {
@@ -92,20 +105,21 @@ main-navigation li:nth-child(3) {
   position: fixed; /* Positionnement fixe pour maintenir la modale en place */
   left: 0; /* Alignement à gauche de la fenêtre */
   top: 0; /* Alignement en haut de la fenêtre */
+  font-family: "Space Mono", monospace;
 }
+
 .modal-content {
   margin-right: auto;
   margin-left: auto;
   margin-top: 80px;
   padding-top: 18px;
-  width: 597px;
-  height: 769px;
+  width: 600px;
+  height: 770px;
   border: solid 5px black;
   background-color: white;
   display: flex;
   flex-direction: column;
 }
-
 #modal-contact label {
   display: block;
   margin-bottom: 10px;
@@ -168,52 +182,163 @@ main-navigation li:nth-child(3) {
 
 /*STRUCTURE CSS DU TEMPLATE SINGLE-PHOTOGRAPHIES*/
 
-.content-wrapper {
+.section_photo {
   display: flex;
-  flex-direction: row;
-  height: calc(100vh - 118px); /* Moins la hauteur du bloc en bas */
+  margin: 0 100px;
+  align-items: flex-end;
 }
 
-.left-block,
-.right-block {
+.section_photo .description_photo {
   width: 50%;
-  padding: 20px;
 }
-
-.left-block {
-  overflow-y: auto;
+.section_photo .description_photo h1 {
+  width: inherit;
+  font-style: italic;
+  font-size: 3em;
+  font-weight: 400;
 }
-
-.right-block .photo-image img {
+.section_photo .description_photo :last-child {
+  border-bottom: solid 2px black;
+  margin-bottom: 0.4em;
+  padding-bottom: 25px;
+}
+.section_photo .photo-image {
+  width: 50%;
+  padding-left: 1em;
+}
+.section_photo .photo-image img {
   width: 100%;
-  height: 100%;
-  object-fit: contain; /* S'assure que l'image reste non croppée et couvre le maximum d'espace */
+  height: auto;
 }
 
-.bottom-block {
+/* ********************** section navigation ****************** */
+.section_navigation {
+  height: 118px;
   display: flex;
+  margin: 0 100px 70px;
   justify-content: space-between;
   align-items: center;
-  height: 118px;
-  padding: 20px;
-  background-color: #f1f1f1;
+  border-bottom: solid 2px black;
+}
+.section_navigation .contact_photo {
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+}
+.section_navigation .contact_photo button {
+  width: 40%;
+  height: 50px;
+  margin-right: 5px;
 }
 
-.navigation-links a {
+.contact_photo button {
+  border: none;
+  background: #d8d8d8;
+  box-shadow: 0px 2px 1px 0px #00000005;
+  transition: color 1s ease;
+}
+.contact_photo button:hover {
+  background: black;
+  color: #d8d8d8;
+}
+
+.section_navigation .navigation_photo {
+  display: flex;
+  gap: 50px;
+  margin-top: 75px;
+}
+
+.next-photo-link {
   position: relative;
-  transition: transform 0.3s ease; /* Ajout de la transition pour les animations de boutons */
 }
-
-.navigation-links a::after {
-  content: "";
+.next-photo-link .thumbnail {
   position: absolute;
-  width: 100px; /* Taille de la miniature */
-  height: 100px;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
   background-size: cover;
-  display: none;
+  background-repeat: no-repeat;
+  transition: all 0.8s ease-in-out;
+  transform: translate(-88%, -113%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.prev-photo-link {
+  position: relative;
+}
+.prev-photo-link .thumbnail {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background-size: cover;
+  background-repeat: no-repeat;
+  transition: all 0.8s ease-in-out;
+  transform: translate(-13%, -113%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.navigation-links a:hover::after {
-  display: block;
-  top: -110px; /* Positionnement au-dessus du lien */
+.prev-photo-link:hover .thumbnail,
+.next-photo-link:hover .thumbnail {
+  width: 100px;
+  height: 80px;
+}
+
+/* ****************** version responsive ******************* */
+@media screen and (max-width: 768px) {
+  .section_photo {
+    flex-direction: column-reverse;
+    margin: 0 30px 20px;
+  }
+  .section_photo .description_photo {
+    width: 100%;
+  }
+  .section_photo .description_photo h1 {
+    font-size: 2em;
+  }
+  .section_photo .description_photo :last-child {
+    border: none;
+  }
+  .section_photo .single_photo {
+    width: 100%;
+  }
+
+  .section_navigation {
+    width: 100%;
+    margin: auto;
+    border-top: solid 2px black;
+  }
+  .section_navigation .contact_photo {
+    width: 80%;
+    flex-direction: column;
+    margin: auto;
+  }
+  .section_navigation .contact_photo button {
+    margin-bottom: 10px;
+    width: 100%;
+  }
+  .section_navigation .navigation_photo {
+    display: none;
+  }
+
+  .section_suggestion h2 {
+    margin: 25px 30px;
+  }
+  .section_suggestion .block_photo {
+    flex-direction: column;
+    margin: 0 30px 20px;
+    gap: 20px;
+  }
+  .section_suggestion .block_photo .photo {
+    width: 100%;
+  }
+  .section_suggestion .block_photo .photo img {
+    height: 65vw;
+    width: 100%;
+  }
 }
