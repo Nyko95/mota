@@ -46,7 +46,7 @@ while (have_posts()) :
     }
     // Je ferme la div "description_photo".
     echo '</div>';
-    // J'affiche la photo dans une div avec une classe "single_photo".
+    // J'affiche la photo dans une div avec une classe "photo-image".
     if ($image) {
         echo '<div class="photo-image">';
         echo wp_get_attachment_image($image, 'full', false, array('style' => 'object-fit: contain;width:100%;height:100%'));
@@ -75,7 +75,7 @@ while (have_posts()) :
     if (!empty($prev_post)) {
         $prev_photo_id = $prev_post->ID;
         echo '<a href="' . get_permalink($prev_photo_id) . '" class="prev-photo-link" title="Photo précédente" data-thumb="' . get_the_post_thumbnail_url($prev_photo_id, 'thumbnail') . '">';
-        echo '<img src="' . get_template_directory_uri() . './assets/images/arrow-left.png" alt="Flèche gauche">';
+        echo '<img src="' . get_template_directory_uri() . '/assets/images/arrow-left.png" alt="Flèche gauche">';
         echo '<div class="thumbnail"></div>';
         echo '</a>';
     }
@@ -83,7 +83,7 @@ while (have_posts()) :
     if (!empty($next_post)) {
         $next_photo_id = $next_post->ID;
         echo '<a href="' . get_permalink($next_photo_id) . '" class="next-photo-link" title="Photo suivante" data-thumb="' . get_the_post_thumbnail_url($next_photo_id, 'thumbnail') . '">';
-        echo '<img src="' . get_template_directory_uri() . './assets/images/arrow-right.png" alt="Flèche droite">';
+        echo '<img src="' . get_template_directory_uri() . '/assets/images/arrow-right.png" alt="Flèche droite">';
         echo '<div class="thumbnail"></div>';
         echo '</a>';
     }
@@ -91,44 +91,7 @@ while (have_posts()) :
     echo '</div>';
     // Je ferme la section "section_navigation".
     echo '</section>';
-// Je termine la boucle.
 endwhile;
-
-// Section photos apparentées
-$photos = null; // Initialisation de la variable
-$categories_terms = get_the_terms(get_the_ID(), 'categories');
-if (!empty($categories_terms) && !is_wp_error($categories_terms)) {
-    $term_ids = array_map(function ($term) {
-        return $term->term_id;
-    }, $categories_terms);
-    $args = array(
-        'post_type' => 'photo',
-        'posts_per_page' => 2,
-        'orderby' => 'rand',
-        'post__not_in' => array(get_the_ID()),
-        'tax_query' => array(
-            array(
-                'taxonomy' => 'categories',
-                'field'    => 'term_id',
-                'terms'    => $term_ids,
-            ),
-        ),
-    );
-    $photos = new WP_Query($args);
-}
-if ($photos && $photos->have_posts()) {
-    echo '<section class="section_suggestion">';
-    echo '<h2>Vous aimerez aussi :</h2>';
-    echo '<div class="block_photo">';
-    while ($photos->have_posts()) {
-        $photos->the_post();
-        get_template_part('template-parts/photo_block');
-    }
-    wp_reset_postdata();
-    echo '</div>';
-    echo '</section>';
-}
 
 // J'inclus le pied de page de la page.
 get_footer();
-?>

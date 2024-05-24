@@ -1,3 +1,13 @@
+/*
+Theme Name: mota
+Theme URI: 
+Author: Nyko95
+Description: Thème pour le projet "Créez un site WordPress complexe pour une photographe freelance"
+Version: 1.0
+Tags: Photographe, event, photos
+Text Domain: mota
+*/
+
 /* ********* STYLE GENERALE ********** */
 body {
   text-transform: uppercase;
@@ -288,6 +298,8 @@ main-navigation li:nth-child(3) {
   width: 100px;
   height: 80px;
 }
+
+/* ****************** photos apparentées ******************* */
 
 /* ****************** version responsive ******************* */
 @media screen and (max-width: 768px) {
