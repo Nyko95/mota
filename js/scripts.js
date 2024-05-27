@@ -56,3 +56,13 @@ jQuery(document).ready(function ($) {
     }
   });
 });
+
+
+// JavaScript pour afficher les miniatures au survol des flèches de navigation
+jQuery(document).ready(function($) {
+  $('.prev-photo-link, .next-photo-link').hover(function() {
+      $(this).find('.thumbnail-preview').fadeIn();
+  }, function() {
+      $(this).find('.thumbnail-preview').fadeOut();
+  });
+});
