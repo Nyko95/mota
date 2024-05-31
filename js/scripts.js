@@ -57,12 +57,37 @@ jQuery(document).ready(function ($) {
   });
 });
 
+//JS POUR MINIATURES
 
-// JavaScript pour afficher les miniatures au survol des flèches de navigation
-jQuery(document).ready(function($) {
-  $('.prev-photo-link, .next-photo-link').hover(function() {
-      $(this).find('.thumbnail-preview').fadeIn();
-  }, function() {
-      $(this).find('.thumbnail-preview').fadeOut();
-  });
+jQuery(document).ready(function ($) {
+  // Au survol de la flèche de gauche
+  $(".prev-photo-link").hover(
+    function () {
+      // Afficher la miniature correspondante
+      $(this).find(".thumbnail-preview").css("opacity", 1);
+    },
+    function () {
+      // Cacher la miniature lorsque le survol est terminé
+      $(this).find(".thumbnail-preview").css("opacity", 0);
+    }
+  );
+
+  // Au survol de la flèche de droite
+  $(".next-photo-link").hover(
+    function () {
+      // Afficher la miniature correspondante
+      $(this).find(".thumbnail-preview").css("opacity", 1);
+    },
+    function () {
+      // Cacher la miniature lorsque le survol est terminé
+      $(this).find(".thumbnail-preview").css("opacity", 0);
+    }
+  );
+});
+
+//AJOUT D'UNE CLASSE POUR CIBLER LE DERNIER ELEMENT DANS LE FOOTER POUR LA VERSION RESPONSIVE
+
+jQuery(document).ready(function ($) {
+  // Sélectionne le dernier élément de la liste du menu de pied de page et lui ajoute une classe
+  $("#footer-menu li:last-child a").addClass("last-link");
 });

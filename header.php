@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
-    <meta charset="<?php bloginfo('charset'); ?>">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <?php wp_head(); ?>
+<meta charset="UTF-8"> <!-- Définit l'encodage des caractères pour la page -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><!-- Rend la page web responsive -->
+    <title>Photographe Event</title> <!-- Définit le titre de la page -->
+    <?php wp_head(); ?><!-- Inclut les scripts et les styles de WordPress et des plugins -->
 </head>
 <body <?php body_class(); ?>>
     <?php wp_body_open(); ?>

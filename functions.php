@@ -38,20 +38,20 @@ function load_more_photos() {
         wp_send_json_error('Invalid POST data');
     }
 
-    $categories = wp_get_post_terms($post_id, 'categorie');
-    $category_ids = wp_list_pluck($categories, 'term_id');
+    $formats = wp_get_post_terms($post_id, 'format');
+    $format_ids = wp_list_pluck($formats, 'term_id');
 
     $related_args = array(
         'post_type' => 'photographie',
         'tax_query' => array(
             array(
-                'taxonomy' => 'categorie',
+                'taxonomy' => 'format',
                 'field' => 'id',
-                'terms' => $category_ids,
+                'terms' => $format_ids,
             ),
         ),
         'post__not_in' => array($post_id),
-        'posts_per_page' => 4,
+        'posts_per_page' => 2,
         'paged' => $paged,
     );
 
