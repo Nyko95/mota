@@ -1,0 +1,23 @@
+//IMPORT FICHIER SASS
+
+@import "./composants/_modal.scss";
+@import "./composants/_header.scss";
+@import "./composants/_footer.scss";
+@import "./composants/_single-photo.scss";
+@import "./composants/_miniature.scss";
+@import "./composants/_photo-apparente.scss";
+@import "./composants/_hero-header.scss";
+@import "./composants/_responsive.scss";
+
+/* ********* STYLE GENERALE ********** */
+body {
+  text-transform: uppercase;
+  margin: 0;
+  color: black;
+  font-family: "space mono", monospace;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}

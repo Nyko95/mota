@@ -1,0 +1,63 @@
+/* ****************** miniatures ******************* */
+
+.navigation_photo {
+  position: relative; /* Assurez-vous que le conteneur a une position relative */
+
+  .thumbnail-preview {
+    position: absolute; /* Position absolue pour un placement précis */
+    width: 100px; /* Largeur fixe */
+    height: 80px; /* Hauteur fixe */
+    left: 50%; /* Centre horizontalement */
+    top: -450%; /* Positionner plus haut */
+    transform: translate(-50%, -50%); /* Centrer parfaitement */
+    overflow: hidden; /* Masque le dépassement */
+    border: 1px solid #ccc; /* Bordure */
+    opacity: 0; /* Opacité initiale à 0 */
+    transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out; /* Transition pour opacité et transformation */
+    display: flex; /* Utilise flexbox pour aligner l'image au centre */
+    align-items: center; /* Centre l'image verticalement */
+    justify-content: center; /* Centre l'image horizontalement */
+    background-size: cover; /* Remplir le conteneur */
+    background-repeat: no-repeat; /* Pas de répétition */
+
+    img {
+      width: 100%; /* Largeur de l'image à 100% */
+      height: auto; /* Hauteur automatique pour conserver les proportions */
+      display: block; /* Rend l'image un élément de bloc */
+    }
+  }
+
+  .prev-photo-link {
+    .thumbnail-preview {
+      transform: translateX(
+        -150%
+      ); /* Déplace l'image vers la gauche pour le survol initial */
+    }
+
+    &:hover {
+      .thumbnail-preview {
+        opacity: 1; /* Opacité maximale au survol */
+        transform: translateX(
+          -50%
+        ); /* Replacer l'image au centre depuis la gauche */
+      }
+    }
+  }
+
+  .next-photo-link {
+    .thumbnail-preview {
+      transform: translateX(
+        150%
+      ); /* Déplace l'image vers la droite pour le survol initial */
+    }
+
+    &:hover {
+      .thumbnail-preview {
+        opacity: 1; /* Opacité maximale au survol */
+        transform: translateX(
+          -50%
+        ); /* Replacer l'image au centre depuis la droite */
+      }
+    }
+  }
+}

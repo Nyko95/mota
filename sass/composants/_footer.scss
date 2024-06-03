@@ -1,0 +1,26 @@
+.site-footer {
+    display: flex;
+    justify-content: center;
+    border-top: 1px solid #000000;
+    padding-top: 8px;
+  
+    .footer-links {
+      display: flex;
+      justify-content: space-between; /* Aligner les éléments sur les extrémités */
+  
+      ul {
+        display: flex;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      
+        li {
+          margin-right: 85.5px; /* Espacement entre les éléments */
+          
+          &:last-child {
+            margin-right: 0; /* Supprimer la marge à droite pour le dernier élément */
+          }
+        }
+      }
+    }
+  }
