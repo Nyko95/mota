@@ -1,30 +1,37 @@
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
-<meta charset="UTF-8"> <!-- Définit l'encodage des caractères pour la page -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"><!-- Rend la page web responsive -->
-    <title>Photographe Event</title> <!-- Définit le titre de la page -->
-    <?php wp_head(); ?><!-- Inclut les scripts et les styles de WordPress et des plugins -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Photographe Event</title>
+<?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
-    <?php wp_body_open(); ?>
-    <!-- Début de l'en-tête du site -->
-    <header class="site-header">
-        <div class="container">
-            <!-- Logo du site -->
-            <div class="site-logo">
-                <a href="<?php echo esc_url(home_url('/')); ?>">
-                    <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/Logo.png" alt="Logo">
-                </a>
+<?php wp_body_open(); ?>
+<header class="site-header">
+    <div class="container">
+        <div class="site-logo">
+            <a href="<?php echo esc_url(home_url('/')); ?>">
+                <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/Logo.png" alt="Logo">
+            </a>
+        </div>
+        <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
+            <div class="menu-toggle-icon">
+                <span class="line"></span>
+                <span class="line"></span>
+                <span class="line"></span>
             </div>
-            <!-- Menu principal -->
-            <nav id="site-navigation" class="main-navigation">
-                <?php
-                wp_nav_menu(array(
-                    'theme_location' => 'menu-principal', // Emplacement du menu défini dans functions.php
-                    'menu_id' => 'primary-menu',
-                ));
-                ?>
-            </nav><!-- #site-navigation -->
-        </div><!-- .container -->
-    </header><!-- .site-header -->
+        </button>
+        <nav id="primary-menu" class="main-navigation">
+            <?php
+            wp_nav_menu(array(
+                'theme_location' => 'menu-principal',
+                'menu_id' => 'primary-menu',
+            ));
+            ?>
+        </nav>
+    </div>
+</header>
+<?php wp_footer(); ?>
+</body>
+</html>

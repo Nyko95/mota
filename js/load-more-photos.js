@@ -1,25 +1,78 @@
+// Attends que le document soit prêt
 jQuery(document).ready(function ($) {
-  var page = 2;
-  $("#load-more").on("click", function () {
-    var button = $(this);
-    var postID = button.data("post-id");
+  // Initialiser Select2 sur les sélecteurs
+  $("#category-filter, #format-filter, #order-filter").select2();
+
+  var page = 1;
+  var loading = false;
+
+  // Fonction pour charger les photos
+  function loadPhotos(reset = false) {
+    if (loading) return;//Vérification si une requete AJX est déja en cours
+    loading = true;
+
+    var category = $("#category-filter").val();
+    var format = $("#format-filter").val();
+    var order = $("#order-filter").val();
+
+    console.log("Sending filters:", {
+      category: category,
+      format: format,
+      order: order,
+      page: page,
+    });
+    console.log("AJAX URL:", mota_params.ajax_url);
 
     $.ajax({
       url: mota_params.ajax_url,
       type: "POST",
       data: {
-        action: "load_more_photos", // Utilisez le même nom d'action que celui déclaré dans le fichier functions.php
+        action: "filter_photos",
+        category: category,
+        format: format,
+        order: order,
         page: page,
-        post_id: postID,
       },
       success: function (response) {
-        if (response) {
-          $(".related-photos-grid").append(response);
-          page++;
+        console.log("AJAX Response:", response);
+        if (response.success) {
+          if (reset) {
+            $("#photo-gallery").html(response.data);
+            page = 2;
+          } else {
+            $("#photo-gallery").append(response.data);
+            page++;
+          }
         } else {
-          button.text("Charger plus").prop("disabled", true);
+          console.error(response.data);
         }
+        loading = false;
+      },
+      error: function (xhr, status, error) {
+        console.error("AJAX Error: ", status, error);
+        loading = false;
       },
     });
+  }
+
+  // Gérer les changements sur les éléments de filtre
+  $("#category-filter, #format-filter, #order-filter").change(function () {
+    page = 1;
+    loadPhotos(true);
   });
+
+  // Gérer le clic sur le bouton "Appliquer"
+  $("#apply-filters").on("click", function () {
+    page = 1;
+    loadPhotos(true);
+  });
+
+  // Gérer le clic sur le bouton "Charger plus"
+  $("#load-more .load-more-button").on("click", function (e) {
+    e.preventDefault();
+    loadPhotos();
+  });
+
+  // Load initial photos
+  loadPhotos(true);
 });

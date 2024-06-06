@@ -3,7 +3,14 @@
 $query = new WP_Query(array(
     'post_type' => 'photographie',
     'posts_per_page' => 1,
-    'orderby' => 'rand'
+    'orderby' => 'rand',
+    'tax_query' => array( //filtre les posts avec le format "paysage"
+        array(
+            'taxonomy' => 'format', 
+            'field' => 'slug',
+            'terms' => 'paysage' 
+        )
+    )
 ));
 
 if ($query->have_posts()) :

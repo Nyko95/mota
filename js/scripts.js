@@ -1,5 +1,3 @@
-/*OUVERTURE DE LA MODALE SUR LE LIEN "CONTACT" ET FERMETURE*/
-
 jQuery(document).ready(function ($) {
   // Ouvrir la modale au clic sur le lien "Contact" dans le header
   $(".menu-item-17").on("click", function (e) {
@@ -22,11 +20,7 @@ jQuery(document).ready(function ($) {
       $(".modal").fadeOut();
     }
   });
-});
 
-/* OUVERTURE DE LA MODALE DE CONTACT AU CLIC SUR LE BOUTON "CONTACT"*/
-
-jQuery(document).ready(function ($) {
   // Ouverture de la modale de contact au clic sur le bouton "Contact" dans les articles
   $(".open-contact-modal").on("click", function (e) {
     e.preventDefault();
@@ -55,11 +49,7 @@ jQuery(document).ready(function ($) {
       $("#modal-contact").fadeOut();
     }
   });
-});
 
-//JS POUR MINIATURES
-
-jQuery(document).ready(function ($) {
   // Au survol de la flèche de gauche
   $(".prev-photo-link").hover(
     function () {
@@ -83,11 +73,50 @@ jQuery(document).ready(function ($) {
       $(this).find(".thumbnail-preview").css("opacity", 0);
     }
   );
-});
 
-//AJOUT D'UNE CLASSE POUR CIBLER LE DERNIER ELEMENT DANS LE FOOTER POUR LA VERSION RESPONSIVE
-
-jQuery(document).ready(function ($) {
   // Sélectionne le dernier élément de la liste du menu de pied de page et lui ajoute une classe
   $("#footer-menu li:last-child a").addClass("last-link");
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const menuToggle = document.querySelector(".menu-toggle");
+  const menuContainer = document.getElementById("primary-menu");
+
+  menuToggle.addEventListener("click", () => {
+    menuToggle.classList.toggle("open");
+    menuContainer.classList.toggle("open");
+
+    // Si l'élément "menuToggle" a la classe "open", ajoute la classe "cross"
+    if (menuToggle.classList.contains("open")) {
+      menuContainer.style.opacity = "1";
+      menuContainer.style.transform = "translateY(0%)";
+    } else {
+      menuContainer.style.opacity = "0";
+      menuContainer.style.transform = "translateY(-100%)";
+    }
+  });
+
+  //INITIALISATION SELECT2 SUR LES SELECTEURS
+
+  // Attends que le document soit prêt
+  jQuery(document).ready(function ($) {
+    // Vérifie la largeur de la fenêtre
+    if ($(window).width() < 768) {
+      // Si la largeur de l'écran est inférieure à 768px
+      // Applique le plugin select2 aux éléments de filtre avec une largeur de 80%
+      $("#category-filter, #format-filter, #order-filter").select2({
+        width: "80%",
+      });
+    } else {
+      // Sinon, applique le plugin select2 avec la largeur par défaut
+      $("#category-filter, #format-filter, #order-filter").select2();
+    }
+    // Ajoute un écouteur d'événement sur l'événement "select2:selecting" pour tous les éléments select
+    $("select").on("select2:selecting", function (e) {
+      // Récupère le dropdown du select2 courant
+      var $dropdown = $(this).parent().find(".select2-dropdown");
+      // Change la couleur de fond du dropdown en rouge
+      $dropdown.css("background-color", "#FE5858");
+    });
+  });
 });
