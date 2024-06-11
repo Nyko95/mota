@@ -47,7 +47,7 @@
 
            
             $photos = new WP_Query($args);
-            var_dump($args);
+            
         if ($photos->have_posts()) {
             while ($photos->have_posts()) {
                 $photos->the_post();
@@ -66,5 +66,6 @@
     echo '</div>';
     ?>
 </section>
-
+<!-- Inclusion de la lightbox -->
+<?php get_template_part('template_parts/lightbox'); ?>
 <?php get_footer(); ?>

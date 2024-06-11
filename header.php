@@ -15,6 +15,7 @@
                 <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/Logo.png" alt="Logo">
             </a>
         </div>
+        
         <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
             <div class="menu-toggle-icon">
                 <span class="line"></span>

@@ -3,19 +3,12 @@
 $query = new WP_Query(array(
     'post_type' => 'photographie',
     'posts_per_page' => 1,
-    'orderby' => 'rand',
-    'tax_query' => array( //filtre les posts avec le format "paysage"
-        array(
-            'taxonomy' => 'format', 
-            'field' => 'slug',
-            'terms' => 'paysage' 
-        )
-    )
+    'orderby' => 'rand'
 ));
 
 if ($query->have_posts()) :
     while ($query->have_posts()) : $query->the_post();
-        $image = get_field('image');// Utilise ACF pour obtenir le champ personnalisé 'image'
+        $image = get_field('image'); // Utilise ACF pour obtenir le champ personnalisé 'image'
         if ($image) {
             $background_image = esc_url($image['url']);
         } else {

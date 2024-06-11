@@ -1,0 +1,72 @@
+
+.section_photo {
+    display: flex;
+    margin: 0 100px;
+    align-items: flex-end;
+  
+    .description_photo {
+      width: 50%;
+      
+      h1 {
+        width: inherit;
+        font-style: italic;
+        font-size: 3em;
+        font-weight: 400;
+      }
+      
+      :last-child {
+        border-bottom: solid 2px black;
+        margin-bottom: 0.4em;
+        padding-bottom: 25px;
+      }
+    }
+    
+    .photo-image {
+      object-fit: contain; /* Applique le comportement "contain" pour ajuster l'image dans le conteneur */
+      width: 50%;
+      padding-left: 1em;
+      
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+  
+  /* ********************** section navigation ****************** */
+  .section_navigation {
+    height: 118px;
+    display: flex;
+    margin: 0 100px 70px;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: solid 2px black;
+  
+    .contact_photo {
+      width: 50%;
+      display: flex;
+      justify-content: space-between;
+      
+      button {
+        width: 40%;
+        height: 50px;
+        margin-right: 5px;
+        font-family: "Space Mono", monospace;
+        border: none;
+        background: #d8d8d8;
+        box-shadow: 0px 2px 1px 0px #00000005;
+        transition: color 1s ease;
+  
+        &:hover {
+          background: black;
+          color: #d8d8d8;
+        }
+      }
+    }
+  
+    .navigation_photo {
+      display: flex;
+      gap: 50px;
+      margin-top: 75px;
+    }
+  }

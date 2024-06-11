@@ -16,6 +16,9 @@
     </div><!-- .container -->
 </footer><!-- .site-footer -->
 
+<!-- Inclusion de la lightbox -->
+<?php get_template_part('template_parts/lightbox'); ?>
+
 <?php wp_footer(); ?>
 </body>
 </html>

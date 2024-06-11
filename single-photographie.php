@@ -130,7 +130,7 @@ while (have_posts()) : the_post();
 
 endwhile;
 
-
+ get_template_part('template_parts/lightbox'); 
 
 get_footer();
 ?>

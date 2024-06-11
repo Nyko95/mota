@@ -78,6 +78,7 @@ jQuery(document).ready(function ($) {
   $("#footer-menu li:last-child a").addClass("last-link");
 });
 
+// MENU BURGER
 document.addEventListener("DOMContentLoaded", () => {
   const menuToggle = document.querySelector(".menu-toggle");
   const menuContainer = document.getElementById("primary-menu");
@@ -88,11 +89,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Si l'élément "menuToggle" a la classe "open", ajoute la classe "cross"
     if (menuToggle.classList.contains("open")) {
-      menuContainer.style.opacity = "1";
-      menuContainer.style.transform = "translateY(0%)";
+      menuToggle.classList.add("cross");
+      menuToggle.setAttribute("aria-expanded", "true");
     } else {
-      menuContainer.style.opacity = "0";
-      menuContainer.style.transform = "translateY(-100%)";
+      // Sinon, supprime la classe "cross"
+      menuToggle.classList.remove("cross");
+      menuToggle.setAttribute("aria-expanded", "false");
     }
   });
 
