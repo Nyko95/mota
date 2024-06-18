@@ -37,7 +37,7 @@
 
 <!-- section liste photos -->
 <section class="section_block-photo">
-    <div id="photo-gallery" class="block_photo">
+    <div id="photo-gallery" class="photo-block">
         <?php
         $args = array(
             'post_type' => 'photographie',

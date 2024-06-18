@@ -1,163 +1,212 @@
 /* ****************** version responsive ******************* */
 @media screen and (max-width: 768px) {
-    .section_photo {
-      flex-direction: column-reverse;
-      margin: 0 30px 20px;
-      
-      .description_photo {
-        width: 100%;
-        
-        h1 {
-          font-size: 2em;
-        }
-        
-        :last-child {
-          border: none;
-        }
-      }
-      
-      .photo-image {
-        width: 100%;
-      }
-    }
-    
-    .section_navigation {
+  /* Section Photo */
+  .section_photo {
+    flex-direction: column-reverse;
+    margin: 0 30px 20px;
+
+    .description_photo {
       width: 100%;
-      margin: auto;
-      border-top: solid 2px black;
-      
-      .contact_photo {
-        width: 80%;
-        flex-direction: column;
-        margin: auto;
-        
-        button {
-          margin-bottom: 10px;
-          width: 100%;
-        }
+
+      h1 {
+        font-size: 2em;
       }
-      
-      .navigation_photo {
-        display: none;
+
+      :last-child {
+        border: none;
       }
     }
-    
-    .section_suggestion {
-      h2 {
-        margin: 25px 30px;
-      }
-      
-      .block_photo {
-        flex-direction: column;
-        margin: 0 30px 20px;
-        gap: 20px;
-        
-        .photo {
-          width: 100%;
-          
-          img {
-            height: 65vw;
-            width: 100%;
-          }
-        }
-      }
-    }
-    
-    .suggestion_photo .related-photo {
-      .hover_photo {
-        width: 100%;
-        height: 0vw;
-        
-        a .eye {
-          width: 50px;
-          right: 42%;
-        }
-        
-        .fullscreen {
-          width: 50px;
-        }
-      }
-      
-      &:hover {
-        .hover_photo {
-          height: 65vw;
-        }
-      }
-    }
-    
-    /* MOBILE FOOTER */
-    .site-footer {
-      position: relative;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      gap: 25px;
-      margin-left: 50px;
-      
-      .container-footer {
-        height: auto;
-        padding-top: 25px;
-      }
-    }
-    
-    #footer-menu {
-      position: relative;
-      padding: 0;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      gap: 25px;
-      
-      .last-link {
-        margin-right: 80px;
-      }
-    }
-    
-    /* MOBILE photos apparentées */
-    .section_photo {
-      flex-direction: column-reverse;
-      margin: 0 30px 20px;
-      
-      .description_photo {
-        width: 100%;
-        
-        h1 {
-          font-size: 2em;
-        }
-        
-        :last-child {
-          border: none;
-        }
-      }
-      
-      .photo-image {
-        width: 100%;
-      }
-    }
-    
-    .section_suggestion {
-      h2 {
-        margin: 25px 30px;
-      }
-      
-      .photo-block {
-        flex-direction: column;
-        margin: 0 30px 20px;
-        gap: 20px;
-        
-        .photo {
-          width: 100%;
-          
-          img {
-            height: 65vw;
-            width: 100%;
-          }
-        }
-      }
-    }
-    
-    /* MOBILE MODAL */
-    .modal-content {
-      width: 80vw;
+
+    .photo-image {
+      width: 100%;
     }
   }
+
+  /* Section Navigation */
+  .section_navigation {
+    width: 100%;
+    margin: auto;
+    border-top: solid 2px black;
+
+    .contact_photo {
+      width: 80%;
+      flex-direction: column;
+      margin: auto;
+
+      button {
+        margin-bottom: 10px;
+        width: 100%;
+      }
+    }
+
+    .navigation_photo {
+      display: none;
+    }
+  }
+
+  /* Section Suggestion */
+  .section_suggestion,
+  .section_block-photo {
+    h2 {
+      margin: 25px 30px;
+    }
+
+    .photo-block {
+      flex-direction: column;
+      margin: 0 30px 20px;
+      gap: 20px;
+
+      .photo {
+        width: 100%;
+
+        img {
+          height: 65vw;
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  /* Photos Apparentées */
+  .suggestion_photo .related-photo {
+    .hover_photo {
+      width: 100%;
+      height: 0vw;
+
+      a .eye {
+        width: 50px;
+        right: 42%;
+      }
+
+      .fullscreen {
+        width: 50px;
+      }
+    }
+
+    &:hover {
+      .hover_photo {
+        height: 65vw;
+      }
+    }
+  }
+
+  /* Footer */
+  .site-footer {
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    margin-left: 50px;
+
+    .container-footer {
+      height: auto;
+      padding-top: 25px;
+    }
+  }
+
+  #footer-menu {
+    position: relative;
+    padding: 0;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+
+    .last-link {
+      margin-right: 80px;
+    }
+  }
+
+  /* Modal */
+  .modal .modal-content {
+    width: 70vw;
+  }
+
+  /* Menu Principal HEADER Responsive */
+  .menu-toggle {
+    display: block; /* Affiché en mode responsive */
+  }
+
+  .menu-toggle,
+  .main-navigation {
+    font-family: "Space Mono", monospace;
+  }
+
+  .main-navigation {
+    display: none;
+    position: absolute;
+    top: 84px;
+    left: 0;
+    width: 100%;
+    height: calc(100% - 84px);
+    background-color: #e00000;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 4;
+    overflow-y: auto;
+    transform: translateY(-100%);
+    opacity: 0;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+
+    &.open {
+      display: flex;
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      justify-content: center;
+      flex-direction: column;
+      gap: 10px;
+      align-items: center;
+    }
+
+    li {
+      margin-left: 0;
+      margin-top: 35px;
+
+      a {
+        color: white;
+        font-size: 2em;
+        text-decoration: none;
+        transition: font-weight 0.3s ease;
+
+        &:hover {
+          font-weight: bold;
+        }
+      }
+    }
+  }
+
+  .menu-toggle-icon span {
+    width: 1.5rem;
+    height: 0.2rem;
+    background: black;
+  }
+
+  #primary-menu {
+    width: 100%;
+    justify-content: center;
+    z-index: 4;
+
+    a {
+      color: white;
+      font-size: 44px;
+      line-height: 65px;
+      margin-right: 20px;
+      font-family: "Space Mono", monospace;
+    }
+  }
+
+  .hero-header {
+    height: 60vw;
+  }
+
+  .overlay-image img {
+    scale: 1.5;
+  }
+}

@@ -1,128 +1,128 @@
 /* ****************** photos apparentées ******************* */
 
 .section-suggestion {
-    margin-top: 40px;
-    padding: 20px;
-    background-color: #f9f9f9;
-  
-    .section-suggestion-container {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-  
-    .section-suggestion-title {
-      font-size: 24px;
-      margin-bottom: 20px;
-      text-align: center;
-    }
-  
-    .section-suggestion-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
-    }
-  
-    h2 {
-      margin: 50px 100px;
-    }
+  margin-top: 40px;
+  padding: 20px;
+  background-color: #f9f9f9;
+
+  .section-suggestion-container {
+    max-width: 1200px;
+    margin: 0 auto;
   }
-  
-  .photo-block {
-    display: flex;
-    justify-content: space-between;
-    margin: 0 100px 50px;
-    flex-wrap: wrap;
+
+  .section-suggestion-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .section-suggestion-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 20px;
-  
-    .photo {
-      width: 47%;
-  
-      img {
-        width: 100%;
-        height: 40vw;
-        object-fit: cover;
-      }
-  
-      .hover_photo {
+  }
+
+  h2 {
+    margin: 50px 100px;
+  }
+}
+
+.photo-block {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 100px 50px;
+  flex-wrap: wrap;
+  gap: 20px;
+
+  .photo {
+    width: 47%;
+
+    img {
+      width: 100%;
+      height: 40vw;
+      object-fit: cover;
+    }
+
+    .hover_photo {
+      position: absolute;
+      width: 100%;
+      height: 0vw;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: rgba(0, 0, 0, 0.7);
+      transition: all 0.8s ease-in-out;
+      opacity: 0;
+
+      .eye {
         position: absolute;
-        width: 100%;
-        height: 0vw;
-        top: 0;
-        left: 0;
+        width: 4vw;
+        height: 3vw;
+        object-fit: contain;
+        top: 45%;
+        right: 42%;
+      }
+
+      .fullscreen {
+        position: absolute;
+        width: 34px;
+        height: 34px;
+        object-fit: contain;
+        top: 18px;
+        right: 20px;
+      }
+
+      .reference {
+        position: absolute;
         bottom: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-color: rgba(0, 0, 0, 0.7);
-        transition: all 0.8s ease-in-out;
-        opacity: 0;
-  
-        .eye {
-          position: absolute;
-          width: 4vw;
-          height: 3vw;
-          object-fit: contain;
-          top: 45%;
-          right: 42%;
-        }
-  
-        .fullscreen {
-          position: absolute;
-          width: 4vw;
-          height: 3vh;
-          object-fit: contain;
-          top: 18px;
-          right: 20px;
-        }
-  
-        .reference {
-          position: absolute;
-          bottom: 0;
-          left: 2vw;
-          color: white;
-        }
-  
-        .categorie {
-          position: absolute;
-          color: white;
-          bottom: 0;
-          right: 2vw;
-        }
-      }
-  
-      &:hover .hover_photo {
-        font-size: 0.8em;
-        height: 40vw;
-        opacity: 1;
-      }
-  
-      :nth-child(2) .hover_photo {
-        left: auto;
-        right: 0;
-      }
-    }
-  }
-  
-  #load-more {
-    display: flex;
-    justify-content: center;
-    margin-top: 50px;
-    margin-bottom: 50px;
-  
-    .load-more-button {
-      font-family: "Space Mono", monospace;
-      font-size: 12px;
-      font-weight: 400;
-      line-height: 50px;
-      text-align: center;
-      background: #d8d8d8;
-      width: 272px;
-      height: 50px;
-  
-      &:hover {
-        background-color: black;
+        left: 2vw;
         color: white;
-        cursor: pointer;
+      }
+
+      .categorie {
+        position: absolute;
+        color: white;
+        bottom: 0;
+        right: 2vw;
       }
     }
+
+    &:hover .hover_photo {
+      font-size: 0.8em;
+      height: 40vw;
+      opacity: 1;
+    }
+
+    :nth-child(2) .hover_photo {
+      left: auto;
+      right: 0;
+    }
   }
+}
+
+#load-more {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
+
+  .load-more-button {
+    font-family: "Space Mono", monospace;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 50px;
+    text-align: center;
+    background: #d8d8d8;
+    width: 272px;
+    height: 50px;
+
+    &:hover {
+      background-color: black;
+      color: white;
+      cursor: pointer;
+    }
+  }
+}

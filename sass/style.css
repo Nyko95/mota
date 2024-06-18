@@ -1,5 +1,6 @@
 @charset "UTF-8";
 /*MODALE DE CONTACT*/
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap");
 .modal {
   display: none;
   z-index: 4; /* Assure que la modale est placée au-dessus du reste du contenu */
@@ -17,7 +18,7 @@
   margin-left: auto;
   margin-top: 80px;
   padding-top: 18px;
-  width: 600px;
+  width: 597px;
   height: 770px;
   border: solid 5px black;
   background-color: white;
@@ -81,12 +82,14 @@
   margin-top: 46px;
 }
 
+/*CSS POUR LE HEADER*/
 .menu li {
   list-style: none;
 }
+
 .menu li a {
-  list-style: none; /* Supprime les puces devant chaque élément de liste */
-  text-decoration: none; /* Supprime le soulignement des liens dans les éléments li */
+  list-style: none; /* Supprime les puces devant chaque Ã©lÃ©ment de liste */
+  text-decoration: none; /* Supprime le soulignement des liens dans les Ã©lÃ©ments li */
   font-family: "Space Mono", monospace; /* Utilisez la police Space Mono */
   font-size: 16px;
   font-weight: 400;
@@ -100,32 +103,40 @@
 .container {
   display: flex;
   align-items: center;
-  justify-content: space-between; /* Aligne les éléments sur les extrémités */
+  justify-content: space-between; /* Aligne les Ã©lÃ©ments sur les extrÃ©mitÃ©s */
 }
 
 .site-logo {
-  flex: 0 0 auto; /* Ne pas agrandir ou réduire le logo */
-  margin-left: 146px; /* Décalage du logo sur la droite */
-  margin-top: 14px; /* Décalage du logo vers le bas */
+  flex: 0 0 auto; /* Ne pas agrandir ou rÃ©duire le logo */
+  margin-left: 146px; /* DÃ©calage du logo sur la droite */
+  margin-top: 14px; /* DÃ©calage du logo vers le bas */
 }
 
 .main-navigation {
-  text-align: right; /* Aligne le texte à droite */
-  margin-right: 214px; /* Décalage des liens vers la gauche */
+  text-align: right; /* Aligne le texte Ã  droite */
+  margin-right: 214px; /* DÃ©calage des liens vers la gauche */
 }
+
 .main-navigation ul {
   display: flex;
   list-style: none;
   margin: 0;
 }
-.main-navigation ul li {
+
+.main-navigation li {
   margin-left: 20px;
 }
-.main-navigation ul li:first-child {
+
+.main-navigation li:first-child {
   margin-left: 0px;
 }
-.main-navigation ul li:nth-child(3) {
-  margin-left: 1226px; /* Décalage du troisième lien sur la droite */
+
+main-navigation li:nth-child(3) {
+  margin-left: 1226px; /* DÃ©calage du troisiÃ¨me lien sur la droite */
+}
+
+.menu-toggle {
+  display: none;
 }
 
 .site-footer {
@@ -149,6 +160,7 @@
 }
 .site-footer .footer-links ul li:last-child {
   margin-right: 0; /* Supprimer la marge à droite pour le dernier élément */
+  pointer-events: none; /* Désactive les clics */
 }
 
 .section_photo {
@@ -318,8 +330,8 @@
 }
 .photo-block .photo .hover_photo .fullscreen {
   position: absolute;
-  width: 4vw;
-  height: 3vh;
+  width: 34px;
+  height: 34px;
   object-fit: contain;
   top: 18px;
   right: 20px;
@@ -413,6 +425,7 @@
 
 /* ****************** version responsive ******************* */
 @media screen and (max-width: 768px) {
+  /* Section Photo */
   .section_photo {
     flex-direction: column-reverse;
     margin: 0 30px 20px;
@@ -429,6 +442,7 @@
   .section_photo .photo-image {
     width: 100%;
   }
+  /* Section Navigation */
   .section_navigation {
     width: 100%;
     margin: auto;
@@ -446,21 +460,27 @@
   .section_navigation .navigation_photo {
     display: none;
   }
-  .section_suggestion h2 {
+  /* Section Suggestion */
+  .section_suggestion h2,
+  .section_block-photo h2 {
     margin: 25px 30px;
   }
-  .section_suggestion .block_photo {
+  .section_suggestion .photo-block,
+  .section_block-photo .photo-block {
     flex-direction: column;
     margin: 0 30px 20px;
     gap: 20px;
   }
-  .section_suggestion .block_photo .photo {
+  .section_suggestion .photo-block .photo,
+  .section_block-photo .photo-block .photo {
     width: 100%;
   }
-  .section_suggestion .block_photo .photo img {
+  .section_suggestion .photo-block .photo img,
+  .section_block-photo .photo-block .photo img {
     height: 65vw;
     width: 100%;
   }
+  /* Photos Apparentées */
   .suggestion_photo .related-photo .hover_photo {
     width: 100%;
     height: 0vw;
@@ -475,7 +495,7 @@
   .suggestion_photo .related-photo:hover .hover_photo {
     height: 65vw;
   }
-  /* MOBILE FOOTER */
+  /* Footer */
   .site-footer {
     position: relative;
     flex-direction: column;
@@ -499,41 +519,83 @@
   #footer-menu .last-link {
     margin-right: 80px;
   }
-  /* MOBILE photos apparentées */
-  .section_photo {
-    flex-direction: column-reverse;
-    margin: 0 30px 20px;
+  /* Modal */
+  .modal .modal-content {
+    width: 70vw;
   }
-  .section_photo .description_photo {
+  /* Menu Principal Responsive */
+  .menu-toggle {
+    display: block; /* Affiché en mode responsive */
+  }
+  .menu-toggle,
+  .main-navigation {
+    font-family: "Space Mono", monospace;
+  }
+  .main-navigation {
+    display: none;
+    position: absolute;
+    top: 84px;
+    left: 0;
     width: 100%;
-  }
-  .section_photo .description_photo h1 {
-    font-size: 2em;
-  }
-  .section_photo .description_photo :last-child {
-    border: none;
-  }
-  .section_photo .photo-image {
-    width: 100%;
-  }
-  .section_suggestion h2 {
-    margin: 25px 30px;
-  }
-  .section_suggestion .photo-block {
+    height: calc(100% - 84px);
+    background-color: #e00000;
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
-    margin: 0 30px 20px;
-    gap: 20px;
+    z-index: 4;
+    overflow-y: auto;
+    transform: translateY(-100%);
+    opacity: 0;
+    transition: transform 0.5s ease, opacity 0.5s ease;
   }
-  .section_suggestion .photo-block .photo {
+  .main-navigation.open {
+    display: flex;
+    transform: translateY(0);
+    opacity: 1;
+  }
+  .main-navigation ul {
+    list-style: none;
+    padding: 0;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+  }
+  .main-navigation li {
+    margin-left: 0;
+    margin-top: 35px;
+  }
+  .main-navigation li a {
+    color: white;
+    font-size: 2em;
+    text-decoration: none;
+    transition: font-weight 0.3s ease;
+  }
+  .main-navigation li a:hover {
+    font-weight: bold;
+  }
+  .menu-toggle-icon span {
+    width: 1.5rem;
+    height: 0.2rem;
+    background: black;
+  }
+  #primary-menu {
     width: 100%;
+    justify-content: center;
+    z-index: 4;
   }
-  .section_suggestion .photo-block .photo img {
-    height: 65vw;
-    width: 100%;
+  #primary-menu a {
+    color: white;
+    font-size: 44px;
+    line-height: 65px;
+    margin-right: 20px;
+    font-family: "Space Mono", monospace;
   }
-  /* MOBILE MODAL */
-  .modal-content {
-    width: 80vw;
+  .hero-header {
+    height: 60vw;
+  }
+  .overlay-image img {
+    scale: 1.5;
   }
 }
 /* Style pour la Lightbox */

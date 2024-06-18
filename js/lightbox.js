@@ -1,77 +1,125 @@
-// Attend que le DOM soit chargé avant d'exécuter le code
-document.addEventListener(
-  "DOMContentLoaded",
-  function () // Sélectionne les éléments nécessaires pour la lightbox
-  {
-    console.log("test");
-    const fullscreenIcons = document.querySelectorAll(".fullscreen");
-    const lightbox = document.getElementById("lightbox");
-    const closeButton = lightbox.querySelector(".cross");
-    const prevButton = lightbox.querySelector(".prev");
-    const nextButton = lightbox.querySelector(".next");
-    const lightboxImage = lightbox.querySelector(".lightbox-image");
-    const lightboxReference = lightbox.querySelector(
-      ".lightbox-info .reference"
-    );
-    const lightboxCategory = lightbox.querySelector(".lightbox-info .category");
+// Exécute le script une fois que le contenu du document est complètement chargé
+document.addEventListener("DOMContentLoaded", function () {
+  
+  // Sélectionne les éléments de la lightbox
+  const lightbox = document.getElementById("lightbox");
+  const closeButton = lightbox.querySelector(".cross");
+  const prevButton = lightbox.querySelector(".prev");
+  const nextButton = lightbox.querySelector(".next");
+  const lightboxImage = lightbox.querySelector(".lightbox-image");
+  const lightboxReference = lightbox.querySelector(".lightbox-info .reference");
+  const lightboxCategory = lightbox.querySelector(".lightbox-info .category");
 
-    //Variables pour Gérer les Images
-    // Initialise un tableau vide pour stocker les informations sur les images
-    let images = [];
-    // Initialise l'index de l'image actuellement affichée à 0
-    let currentIndex = 0;
+  // Initialise les variables pour stocker les images et l'index de l'image actuelle
+  let images = [];
+  let currentIndex = 0;
 
-    // Fonction pour ouvrir la lightbox
-    function openLightbox(event) {
-      event.preventDefault();
+  // Fonction pour ouvrir la lightbox
+  function openLightbox(event) {
+    event.preventDefault();
 
-      // Mise à jour du tableau d'images et de l'index courant
-      images = Array.from(document.querySelectorAll(".fullscreen")).map(
-        (img) => img.parentElement.dataset
-      );
-      currentIndex = Array.from(fullscreenIcons).indexOf(event.target);
+    console.log("La fonction openLightbox est appelée !");
+    console.log("L'élément .fullscreen a été cliqué:", event.target);
 
-      updateLightboxContent(images[currentIndex]);
-      lightbox.classList.add("active"); //Ajout de la classe "active"
+    // Trouve le conteneur parent le plus proche avec les attributs de données nécessaires
+    const fullscreenContainer = event.target.closest("span");
+    if (!fullscreenContainer) {
+      console.error("Aucun conteneur trouvé pour l'élément:", event.target);
+      return;
     }
 
-    // Fonction pour mettre à jour le contenu de la lightbox
-    function updateLightboxContent(data) {
-      lightboxImage.src = data.imageUrl;
-      lightboxReference.textContent = "Référence : " + data.reference;
-      lightboxCategory.textContent = "Catégorie : " + data.category;
+    // Récupère les attributs de données
+    const imageUrl = fullscreenContainer.getAttribute("data-image-url");
+    const reference = fullscreenContainer.getAttribute("data-reference");
+    const category = fullscreenContainer.getAttribute("data-category");
+
+    console.log("Attributs de l'élément cliqué:", { imageUrl, reference, category });
+
+    // Vérifie que tous les attributs de données sont présents
+    if (!imageUrl || !reference || !category) {
+      console.error("Les attributs de données sont manquants:", { imageUrl, reference, category });
+      return;
     }
 
-    // Fonction pour fermer la lightbox
-    function closeLightbox() {
-      lightbox.classList.remove("active");
-    }
-
-    // Fonction pour afficher la photo suivante
-    function nextPhoto() {
-      currentIndex = (currentIndex + 1) % images.length;
-      updateLightboxContent(images[currentIndex]);
-    }
-
-    // Fonction pour afficher la photo précédente
-    function prevPhoto() {
-      currentIndex = (currentIndex - 1 + images.length) % images.length;
-      updateLightboxContent(images[currentIndex]);
-    }
-
-    // Ajouter des écouteurs d'événements
-    fullscreenIcons.forEach((icon) => {
-      icon.addEventListener("click", openLightbox);
+    // Crée un tableau des images en parcourant tous les éléments .fullscreen
+    images = Array.from(document.querySelectorAll(".fullscreen")).map((icon) => {
+      const container = icon.closest("span");
+      return {
+        imageUrl: container ? container.getAttribute("data-image-url") : null,
+        reference: container ? container.getAttribute("data-reference") : null,
+        category: container ? container.getAttribute("data-category") : null,
+      };
     });
-    closeButton.addEventListener("click", closeLightbox);
-    prevButton.addEventListener("click", prevPhoto);
-    nextButton.addEventListener("click", nextPhoto);
 
-    // Fermer la lightbox en cliquant à l'extérieur de l'image
-    lightbox.addEventListener("click", (e) => {
-      if (e.target === lightbox) {
-        closeLightbox();
-      }
+    // Trouve l'index de l'image actuellement cliquée
+    currentIndex = Array.from(document.querySelectorAll(".fullscreen")).indexOf(event.target);
+
+    // Met à jour le contenu de la lightbox avec l'image cliquée
+    updateLightboxContent(images[currentIndex]);
+    
+    // Affiche la lightbox
+    lightbox.classList.add("active");
+  }
+
+  // Fonction pour mettre à jour le contenu de la lightbox
+  function updateLightboxContent(data) {
+    console.log("Mise à jour du contenu de la lightbox avec:", data);
+    lightboxImage.src = data.imageUrl;
+    lightboxReference.textContent = "Référence : " + data.reference;
+    lightboxCategory.textContent = "Catégorie : " + data.category;
+  }
+
+  // Fonction pour fermer la lightbox
+  function closeLightbox() {
+    lightbox.classList.remove("active");
+  }
+
+  // Fonction pour afficher la photo suivante
+  function nextPhoto() {
+    currentIndex = (currentIndex + 1) % images.length;
+    updateLightboxContent(images[currentIndex]);
+  }
+
+  // Fonction pour afficher la photo précédente
+  function prevPhoto() {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    updateLightboxContent(images[currentIndex]);
+  }
+
+  // Fonction pour ajouter des écouteurs d'événements aux éléments .fullscreen
+  function addEventListenersToFullscreenIcons() {
+    document.querySelectorAll(".fullscreen").forEach((icon, index) => {
+      const container = icon.closest("span");
+      console.log("Attributs de données pour .fullscreen index:", index, {
+        imageUrl: container ? container.getAttribute("data-image-url") : null,
+        reference: container ? container.getAttribute("data-reference") : null,
+        category: container ? container.getAttribute("data-category") : null,
+      });
+
+      // Ajoute l'écouteur d'événement au clic pour ouvrir la lightbox
+      icon.addEventListener("click", openLightbox);
+      console.log("Écouteur d'événement ajouté à l'élément .fullscreen index:", index);
     });
   }
-);
+
+  // Initial setup: Ajoute des écouteurs d'événements aux icônes fullscreen existantes
+  addEventListenersToFullscreenIcons();
+
+  // Utilise MutationObserver pour surveiller les changements dans le DOM
+  const observer = new MutationObserver(addEventListenersToFullscreenIcons);
+
+  // Observe les changements dans le document pour ajouter des écouteurs aux nouveaux éléments .fullscreen
+  observer.observe(document.body, { childList: true, subtree: true });
+
+  // Ajoute des écouteurs d'événements aux boutons de contrôle de la lightbox
+  closeButton.addEventListener("click", closeLightbox);
+  prevButton.addEventListener("click", prevPhoto);
+  nextButton.addEventListener("click", nextPhoto);
+
+  // Ferme la lightbox si l'utilisateur clique à l'extérieur de l'image
+  lightbox.addEventListener("click", (e) => {
+    if (e.target === lightbox) {
+      closeLightbox();
+    }
+  });
+});

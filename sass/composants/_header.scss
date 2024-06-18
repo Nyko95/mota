@@ -1,53 +1,57 @@
-.menu {
-    li {
-      list-style: none;
-      
-      a {
-        list-style: none; /* Supprime les puces devant chaque élément de liste */
-        text-decoration: none; /* Supprime le soulignement des liens dans les éléments li */
-        font-family: "Space Mono", monospace; /* Utilisez la police Space Mono */
-        font-size: 16px;
-        font-weight: 400;
-        line-height: 23.7px;
-        text-align: left;
-        color: black;
-        text-transform: uppercase; /* Mettre tout le texte en majuscules */
-        margin-top: 14px;
-      }
-    }
-  }
-  
-  .container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between; /* Aligne les éléments sur les extrémités */
-  }
-  
-  .site-logo {
-    flex: 0 0 auto; /* Ne pas agrandir ou réduire le logo */
-    margin-left: 146px; /* Décalage du logo sur la droite */
-    margin-top: 14px; /* Décalage du logo vers le bas */
-  }
-  
-  .main-navigation {
-    text-align: right; /* Aligne le texte à droite */
-    margin-right: 214px; /* Décalage des liens vers la gauche */
-    
-    ul {
-      display: flex;
-      list-style: none;
-      margin: 0;
-      
-      li {
-        margin-left: 20px;
-        
-        &:first-child {
-          margin-left: 0px;
-        }
-        
-        &:nth-child(3) {
-          margin-left: 1226px; /* Décalage du troisième lien sur la droite */
-        }
-      }
-    }
-  }
+/*CSS POUR LE HEADER*/
+
+.menu li {
+  list-style: none;
+}
+
+.menu li a {
+  list-style: none; /* Supprime les puces devant chaque Ã©lÃ©ment de liste */
+  text-decoration: none; /* Supprime le soulignement des liens dans les Ã©lÃ©ments li */
+  font-family: "Space Mono", monospace; /* Utilisez la police Space Mono */
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 23.7px;
+  text-align: left;
+  color: black;
+  text-transform: uppercase; /* Mettre tout le texte en majuscules */
+  margin-top: 14px;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Aligne les Ã©lÃ©ments sur les extrÃ©mitÃ©s */
+}
+
+.site-logo {
+  flex: 0 0 auto; /* Ne pas agrandir ou rÃ©duire le logo */
+  margin-left: 146px; /* DÃ©calage du logo sur la droite */
+  margin-top: 14px; /* DÃ©calage du logo vers le bas */
+}
+
+.main-navigation {
+  text-align: right; /* Aligne le texte Ã  droite */
+  margin-right: 214px; /* DÃ©calage des liens vers la gauche */
+}
+
+.main-navigation ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+}
+
+.main-navigation li {
+  margin-left: 20px;
+}
+
+.main-navigation li:first-child {
+  margin-left: 0px;
+}
+
+main-navigation li:nth-child(3) {
+  margin-left: 1226px; /* DÃ©calage du troisiÃ¨me lien sur la droite */
+}
+
+.menu-toggle {
+  display: none;
+}

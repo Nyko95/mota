@@ -24,6 +24,10 @@
             </div>
         </button>
         <nav id="primary-menu" class="main-navigation">
+        <ul>
+                <li><a href="<?php echo esc_url(home_url('/')); ?>">Accueil</a></li>
+               
+            </ul>
             <?php
             wp_nav_menu(array(
                 'theme_location' => 'menu-principal',

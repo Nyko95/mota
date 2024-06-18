@@ -50,6 +50,9 @@ jQuery(document).ready(function ($) {
     }
   });
 
+
+  //pour les miniatures
+  
   // Au survol de la flèche de gauche
   $(".prev-photo-link").hover(
     function () {

@@ -183,12 +183,6 @@ add_action('wp_ajax_filter_photos', 'filter_photos');
 add_action('wp_ajax_nopriv_filter_photos', 'filter_photos');
 
 
-/* function enqueue_lightbox_assets() {
-    wp_enqueue_style('lightbox-style', get_template_directory_uri() . '/style.css');
-    wp_enqueue_script('lightbox-script', get_template_directory_uri() . '/js/lightbox.js', array('jquery'), null, true);
-}
-add_action('wp_enqueue_scripts', 'enqueue_lightbox_assets'); */
-
 function enqueue_lightbox_assets() {
     // Enqueue le style principal de votre thème
     wp_enqueue_style('main-style', get_stylesheet_uri());

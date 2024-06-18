@@ -19,6 +19,7 @@
           
           &:last-child {
             margin-right: 0; /* Supprimer la marge à droite pour le dernier élément */
+            pointer-events: none; /* Désactive les clics */
           }
         }
       }

@@ -55,6 +55,7 @@ a {
 .main-navigation {
   text-align: right; /* Aligne le texte à droite */
   margin-right: 214px; /* Décalage des liens vers la gauche */
+  display: flex;
 }
 
 .main-navigation ul {
@@ -73,6 +74,10 @@ a {
 
 main-navigation li:nth-child(3) {
   margin-left: 1226px; /* Décalage du troisième lien sur la droite */
+}
+
+.main-navigation ul li a:hover {
+  font-weight: bold; /* Rend le texte plus gras au survol */
 }
 
 .menu-toggle {
@@ -105,6 +110,7 @@ main-navigation li:nth-child(3) {
 
 .footer-links li:last-child {
   margin-right: 0; /* Supprimer la marge à droite pour le dernier élément */
+  pointer-events: none; /* Désactive les clics */
 }
 
 /*MODALE DE CONTACT*/
@@ -864,6 +870,11 @@ main-navigation li:nth-child(3) {
     height: 65vw;
     width: 100%;
   }
+
+  .section_block-photo .photo-block .photo img {
+    height: 65vw;
+    width: 100%;
+  }
 }
 
 /* ************************** MOBILE MODAL**************************** */
@@ -950,12 +961,13 @@ main-navigation li:nth-child(3) {
     padding: 0;
     justify-content: center;
     flex-direction: column;
-    gap: 40px;
+    gap: 10px;
     align-items: center;
   }
 
   .main-navigation li {
     margin-left: 0;
+    margin-top: 35px;
   }
 
   .main-navigation li a {
@@ -985,13 +997,13 @@ main-navigation li:nth-child(3) {
     font-size: 44px;
     line-height: 65px;
     margin-right: 20px;
-    display: block;
+    font-family: "Space Mono", monospace;
   }
 
-  .section_hero {
+  .hero-header {
     height: 60vw;
   }
-  .section_hero .hero .logo_hero {
+  .overlay-image img {
     scale: 1.5;
   }
   .section_filter-photos {

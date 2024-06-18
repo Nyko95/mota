@@ -126,11 +126,12 @@ while (have_posts()) : the_post();
      wp_reset_postdata();
      echo '</div>';
      echo '</section>';
+     get_template_part('template_parts/lightbox'); 
  }
 
 endwhile;
 
- get_template_part('template_parts/lightbox'); 
+ 
 
 get_footer();
 ?>
