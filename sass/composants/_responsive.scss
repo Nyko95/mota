@@ -124,6 +124,14 @@
   }
 
   /* Menu Principal HEADER Responsive */
+  .container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+  }
+  .site-logo {
+    margin: 0;
+  }
   .menu-toggle {
     display: block; /* Affiché en mode responsive */
   }

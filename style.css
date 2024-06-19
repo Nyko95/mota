@@ -39,23 +39,29 @@ a {
   text-transform: uppercase; /* Mettre tout le texte en majuscules */
   margin-top: 14px;
 }
-
+@media screen and (max-width: 768px) {
+  .container {
+    display: flex;
+    align-items: center;
+  }
+}
 .container {
   display: flex;
   align-items: center;
-  justify-content: space-between; /* Aligne les éléments sur les extrémités */
+  justify-content: space-between;
 }
 
 .site-logo {
   flex: 0 0 auto; /* Ne pas agrandir ou réduire le logo */
-  margin-left: 146px; /* Décalage du logo sur la droite */
-  margin-top: 14px; /* Décalage du logo vers le bas */
+  margin-left: 216px; /* Décalage du logo sur la droite */
+  margin-top: 28px; /* Décalage du logo vers le bas */
 }
 
 .main-navigation {
   text-align: right; /* Aligne le texte à droite */
-  margin-right: 214px; /* Décalage des liens vers la gauche */
+  margin-right: 120px; /* Décalage des liens vers la gauche */
   display: flex;
+  margin-top: 28px;
 }
 
 .main-navigation ul {
@@ -365,7 +371,7 @@ main-navigation li:nth-child(3) {
 }
 
 .photo-block .photo {
-  width: 47%;
+  width: 49%;
 }
 
 .photo-block .photo img {
@@ -1071,5 +1077,9 @@ main-navigation li:nth-child(3) {
 
   .block_photo .photo .hover_photo {
     display: none;
+  }
+  .site-logo {
+    margin-left: 100px;
+    margin-top: 25px;
   }
 }

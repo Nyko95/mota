@@ -83,6 +83,10 @@
 }
 
 /*CSS POUR LE HEADER*/
+.site-header {
+  height: 80px;
+}
+
 .menu li {
   list-style: none;
 }
@@ -103,13 +107,12 @@
 .container {
   display: flex;
   align-items: center;
-  justify-content: space-between; /* Aligne les Ã©lÃ©ments sur les extrÃ©mitÃ©s */
 }
 
 .site-logo {
   flex: 0 0 auto; /* Ne pas agrandir ou rÃ©duire le logo */
-  margin-left: 146px; /* DÃ©calage du logo sur la droite */
-  margin-top: 14px; /* DÃ©calage du logo vers le bas */
+  margin-left: 216px; /* DÃ©calage du logo sur la droite */
+  margin-top: 28px; /* DÃ©calage du logo vers le bas */
 }
 
 .main-navigation {
@@ -523,7 +526,15 @@ main-navigation li:nth-child(3) {
   .modal .modal-content {
     width: 70vw;
   }
-  /* Menu Principal Responsive */
+  /* Menu Principal HEADER Responsive */
+  .container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+  }
+  .site-logo {
+    margin: 0;
+  }
   .menu-toggle {
     display: block; /* Affiché en mode responsive */
   }
