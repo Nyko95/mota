@@ -8,20 +8,12 @@ jQuery(document).ready(function ($) {
 
   // Fonction pour charger les photos
   function loadPhotos(reset = false) {
-    if (loading) return;//Vérification si une requete AJX est déja en cours
+    if (loading) return; // Vérification si une requête AJAX est déjà en cours
     loading = true;
 
     var category = $("#category-filter").val();
     var format = $("#format-filter").val();
     var order = $("#order-filter").val();
-
-    console.log("Sending filters:", {
-      category: category,
-      format: format,
-      order: order,
-      page: page,
-    });
-    console.log("AJAX URL:", mota_params.ajax_url);
 
     $.ajax({
       url: mota_params.ajax_url,
@@ -34,7 +26,6 @@ jQuery(document).ready(function ($) {
         page: page,
       },
       success: function (response) {
-        console.log("AJAX Response:", response);
         if (response.success) {
           if (reset) {
             $("#photo-gallery").html(response.data);
@@ -73,6 +64,6 @@ jQuery(document).ready(function ($) {
     loadPhotos();
   });
 
-  // Load initial photos
+  // Charger les photos initiales
   loadPhotos(true);
 });

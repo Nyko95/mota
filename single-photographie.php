@@ -110,9 +110,7 @@ while (have_posts()) : the_post();
      ];
 
      $photos = new WP_Query($args);
-     //echo "<pre>";
-     //var_dump($photos);
-     //echo "</pre>";
+     
  }
 
  if ($photos && $photos->have_posts()) {

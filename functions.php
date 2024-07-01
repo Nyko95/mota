@@ -19,8 +19,7 @@ function mota_scripts() {
 add_action('wp_enqueue_scripts', 'mota_scripts');
 
 // Fonction pour charger les styles CSS générés à partir de Sass
-function mota_custom_styles()
-{
+function mota_custom_styles() {
     // Déclarer le fichier CSS généré à partir de Sass
     wp_enqueue_style(
         'mota-custom-css',
@@ -31,8 +30,6 @@ function mota_custom_styles()
 }
 add_action('wp_enqueue_scripts', 'mota_custom_styles');
 
-
-
 function mota_enqueue_scripts() {
     wp_enqueue_script('load-more-photos', get_template_directory_uri() . '/js/load-more-photos.js', array('jquery'), null, true);
 
@@ -42,9 +39,7 @@ function mota_enqueue_scripts() {
 }
 add_action('wp_enqueue_scripts', 'mota_enqueue_scripts');
 
-
-//REQUETE AJAX pour charger les photos"
-
+// Requête AJAX pour charger les photos
 function load_more_photos() {
     // Validation des entrées POST
     $paged = isset($_POST['page']) ? intval($_POST['page']) : 2;
@@ -112,21 +107,11 @@ function load_more_photos() {
 add_action('wp_ajax_load_more_photos', 'load_more_photos');
 add_action('wp_ajax_nopriv_load_more_photos', 'load_more_photos');
 
-//Ajout de la bibliotheque JS "Select2" à partir d'un CDN (réseau de diffusion de contenu)
-function mota_enqueue_select2() {
-    wp_enqueue_style('select2-css', 'https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css');
-    wp_enqueue_script('select2-js', 'https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js', array('jquery'), null, true);
-}
-add_action('wp_enqueue_scripts', 'mota_enqueue_select2');
-
-
 function filter_photos() {
     $category = isset($_POST['category']) ? sanitize_text_field($_POST['category']) : '';
     $format = isset($_POST['format']) ? sanitize_text_field($_POST['format']) : '';
     $order = isset($_POST['order']) ? sanitize_text_field($_POST['order']) : 'DESC';
     $page = isset($_POST['page']) ? intval($_POST['page']) : 1;
-
-    error_log("Received filters: category=$category, format=$format, order=$order, page=$page");
 
     $args = array(
         'post_type' => 'photographie',
@@ -139,7 +124,6 @@ function filter_photos() {
     $tax_query = array();
 
     if ($category) {
-        error_log("Applying category filter: $category");
         $tax_query[] = array(
             'taxonomy' => 'categorie',
             'field'    => 'slug',
@@ -148,7 +132,6 @@ function filter_photos() {
     }
 
     if ($format) {
-        error_log("Applying format filter: $format");
         $tax_query[] = array(
             'taxonomy' => 'format',
             'field'    => 'slug',
@@ -159,9 +142,6 @@ function filter_photos() {
     if (!empty($tax_query)) {
         $args['tax_query'] = $tax_query;
     }
-
-    // Débogage des arguments de requête
-    error_log(print_r($args, true));
 
     $query = new WP_Query($args);
 
@@ -182,6 +162,12 @@ function filter_photos() {
 add_action('wp_ajax_filter_photos', 'filter_photos');
 add_action('wp_ajax_nopriv_filter_photos', 'filter_photos');
 
+// Ajout de la bibliothèque JS "Select2" à partir d'un CDN (réseau de diffusion de contenu)
+function mota_enqueue_select2() {
+    wp_enqueue_style('select2-css', 'https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css');
+    wp_enqueue_script('select2-js', 'https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js', array('jquery'), null, true);
+}
+add_action('wp_enqueue_scripts', 'mota_enqueue_select2');
 
 function enqueue_lightbox_assets() {
     // Enqueue le style principal de votre thème

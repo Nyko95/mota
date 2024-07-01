@@ -1,6 +1,5 @@
 // Exécute le script une fois que le contenu du document est complètement chargé
 document.addEventListener("DOMContentLoaded", function () {
-  
   // Sélectionne les éléments de la lightbox
   const lightbox = document.getElementById("lightbox");
   const closeButton = lightbox.querySelector(".cross");
@@ -18,9 +17,6 @@ document.addEventListener("DOMContentLoaded", function () {
   function openLightbox(event) {
     event.preventDefault();
 
-    console.log("La fonction openLightbox est appelée !");
-    console.log("L'élément .fullscreen a été cliqué:", event.target);
-
     // Trouve le conteneur parent le plus proche avec les attributs de données nécessaires
     const fullscreenContainer = event.target.closest("span");
     if (!fullscreenContainer) {
@@ -33,37 +29,44 @@ document.addEventListener("DOMContentLoaded", function () {
     const reference = fullscreenContainer.getAttribute("data-reference");
     const category = fullscreenContainer.getAttribute("data-category");
 
-    console.log("Attributs de l'élément cliqué:", { imageUrl, reference, category });
-
     // Vérifie que tous les attributs de données sont présents
     if (!imageUrl || !reference || !category) {
-      console.error("Les attributs de données sont manquants:", { imageUrl, reference, category });
+      console.error("Les attributs de données sont manquants:", {
+        imageUrl,
+        reference,
+        category,
+      });
       return;
     }
 
     // Crée un tableau des images en parcourant tous les éléments .fullscreen
-    images = Array.from(document.querySelectorAll(".fullscreen")).map((icon) => {
-      const container = icon.closest("span");
-      return {
-        imageUrl: container ? container.getAttribute("data-image-url") : null,
-        reference: container ? container.getAttribute("data-reference") : null,
-        category: container ? container.getAttribute("data-category") : null,
-      };
-    });
+    images = Array.from(document.querySelectorAll(".fullscreen")).map(
+      (icon) => {
+        const container = icon.closest("span");
+        return {
+          imageUrl: container ? container.getAttribute("data-image-url") : null,
+          reference: container
+            ? container.getAttribute("data-reference")
+            : null,
+          category: container ? container.getAttribute("data-category") : null,
+        };
+      }
+    );
 
     // Trouve l'index de l'image actuellement cliquée
-    currentIndex = Array.from(document.querySelectorAll(".fullscreen")).indexOf(event.target);
+    currentIndex = Array.from(document.querySelectorAll(".fullscreen")).indexOf(
+      event.target
+    );
 
     // Met à jour le contenu de la lightbox avec l'image cliquée
     updateLightboxContent(images[currentIndex]);
-    
+
     // Affiche la lightbox
     lightbox.classList.add("active");
   }
 
   // Fonction pour mettre à jour le contenu de la lightbox
   function updateLightboxContent(data) {
-    console.log("Mise à jour du contenu de la lightbox avec:", data);
     lightboxImage.src = data.imageUrl;
     lightboxReference.textContent = "Référence : " + data.reference;
     lightboxCategory.textContent = "Catégorie : " + data.category;
@@ -88,17 +91,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Fonction pour ajouter des écouteurs d'événements aux éléments .fullscreen
   function addEventListenersToFullscreenIcons() {
-    document.querySelectorAll(".fullscreen").forEach((icon, index) => {
-      const container = icon.closest("span");
-      console.log("Attributs de données pour .fullscreen index:", index, {
-        imageUrl: container ? container.getAttribute("data-image-url") : null,
-        reference: container ? container.getAttribute("data-reference") : null,
-        category: container ? container.getAttribute("data-category") : null,
-      });
-
+    document.querySelectorAll(".fullscreen").forEach((icon) => {
       // Ajoute l'écouteur d'événement au clic pour ouvrir la lightbox
       icon.addEventListener("click", openLightbox);
-      console.log("Écouteur d'événement ajouté à l'élément .fullscreen index:", index);
     });
   }
 
